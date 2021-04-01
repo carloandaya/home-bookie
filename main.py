@@ -17,6 +17,9 @@ class Wager:
     def __repr__(self): 
         return(f'{self.stake1} {self.stake2}')
 
+def menu(menu_selection):
+    print(f'You selected {menu_selection}.')
+
 
 if __name__ == '__main__':
     while True: 
@@ -35,8 +38,11 @@ Enter your selection:
             ))
         except ValueError:
             continue
-        else: 
-            print(menu_selection)
-            break
+        else:
+            if menu_selection < 0 or menu_selection > 5:
+                continue
+            else:
+                menu(menu_selection)
+                break
 
 
