@@ -6,7 +6,7 @@ class Person:
         self.wagers = []
 
     def __repr__(self): 
-        return('Hello my name is {} {}'.format(self.firstname, self.lastname))
+        return('{} {}'.format(self.firstname, self.lastname))
 
 
 class Wager:
@@ -17,12 +17,10 @@ class Wager:
     def __repr__(self): 
         return(f'{self.stake1} {self.stake2}')
 
-def menu(menu_selection):
-    print(f'You selected {menu_selection}.')
+person_list = []
 
-
-if __name__ == '__main__':
-    while True: 
+def show_main_menu(): 
+    while True:
         try:
             menu_selection = int(input(
 '''
@@ -40,9 +38,34 @@ Enter your selection:
             continue
         else:
             if menu_selection < 0 or menu_selection > 5:
+                print('Invalid selection')
                 continue
             else:
-                menu(menu_selection)
+                selection(menu_selection)
                 break
 
+def selection(menu_selection):
+    if menu_selection == 1: 
+        create_person()
+    elif menu_selection == 3: 
+        list_person()
+    else: 
+        print(f'You selected {menu_selection}.')
+
+def create_person(): 
+    firstname = input('First Name: ').strip()
+    lastname = input('Last Name: ').strip()
+    new_person = Person(firstname, lastname)
+    person_list.append(new_person)
+    show_main_menu()
+
+def list_person(): 
+    for number, person in enumerate(person_list, 1):
+        print(number, person)
+    show_main_menu()
+
+
+
+if __name__ == '__main__':
+    show_main_menu()
 
