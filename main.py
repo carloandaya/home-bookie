@@ -47,6 +47,8 @@ Enter your selection:
 def selection(menu_selection):
     if menu_selection == 1: 
         create_person()
+    elif menu_selection == 2:
+        create_wager()
     elif menu_selection == 3: 
         list_person()
     else: 
@@ -58,6 +60,9 @@ def create_person():
     new_person = Person(firstname, lastname)
     person_list.append(new_person)
     show_main_menu()
+
+def create_wager():
+    pass
 
 def list_person(): 
     for number, person in enumerate(person_list, 1):
